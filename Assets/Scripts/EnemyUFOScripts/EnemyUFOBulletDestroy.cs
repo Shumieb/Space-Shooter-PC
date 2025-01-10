@@ -10,5 +10,11 @@ public class EnemyUFOBulletDestroy : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if (collision.tag == "PlayerBullet")
+        {
+            Destroy(gameObject);
+            Destroy(collision.gameObject);
+        }
     }
 }
