@@ -10,5 +10,10 @@ public class EnemyUFODestroy : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        else if (collision.tag == "PlayerBullet")
+        {
+            Destroy(gameObject);
+            Destroy(collision.gameObject);
+        }
     }
 }

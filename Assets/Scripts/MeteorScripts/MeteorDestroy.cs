@@ -10,5 +10,10 @@ public class MeteorDestroy : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        else if (collision.tag == "PlayerBullet")
+        {
+            Destroy(gameObject);
+            Destroy(collision.gameObject);
+        }
     }
 }
