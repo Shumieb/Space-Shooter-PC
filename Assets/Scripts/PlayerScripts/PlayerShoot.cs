@@ -11,7 +11,11 @@ public class PlayerShoot : MonoBehaviour
     private GameObject shootingPoint;
 
     [SerializeField]
+    private bool canShoot = true;
+
+    [SerializeField]
     private float waitTime = 5f;
+
     [SerializeField]
     private float timeSinceLastShot = 0f;
 
@@ -19,10 +23,18 @@ public class PlayerShoot : MonoBehaviour
     {
         timeSinceLastShot++;
 
-        if (timeSinceLastShot == waitTime)
+       if (timeSinceLastShot == waitTime)
         {
-            Instantiate(bulletPrefab, shootingPoint.transform.position, Quaternion.identity);
+            canShoot = true;            
             timeSinceLastShot = 0f;
+        }
+
+        if (canShoot)
+        {
+            if (Input.GetKey(KeyCode.Space)){
+                canShoot = false;
+                Instantiate(bulletPrefab, shootingPoint.transform.position, Quaternion.identity);
+            }
         }
     }
 }
